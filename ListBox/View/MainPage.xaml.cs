@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ListBox.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,9 +23,21 @@ namespace ListBox
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private NoteVm vm;
+
         public MainPage()
         {
+            
             this.InitializeComponent();
+            vm = new NoteVm();
+            DataContext = vm;
+        }
+
+       private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string newItemNote = TxtBoxItem.Text;
+            vm.AddNewNote(newItemNote);
+            
         }
     }
 }
